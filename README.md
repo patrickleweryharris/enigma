@@ -1,17 +1,22 @@
 # Enigma
+![License](https://img.shields.io/badge/LICENSE-MIT-blue.svg) ![python](https://img.shields.io/badge/python-3.5-blue.svg)
 The enigma encryption algorithm in python
 
 
 ## Introduction
 The enigma machine was one of the most advanced crypto graphical technologies of it's time, possibly the most advanced cryptography humanity has achieved without computers.
 
-The enigma machine was mechanical, and relied on three methods to encrypt and decrypt messages.
+Enigma is a type of symmetric encryption. That is, the same key was used to encrypt and decrypt a message. Anyone with this key would be able to encode and decode messages.
+
+This key was constructed by three different parts of the enigma machine.
 
 These are:
 
   - Rotor settings
   - Ring settings
   - Plug settings
+
+## Enigma Settings
 
 ### Rotor Settings
 
@@ -43,3 +48,5 @@ An example plug setting could be `[['P','O'], ['M', 'L'], ['I','U'], ['K','J'], 
 
 Again, for the purposes of this simulation, the ordinals of these letters will be use. So this example ring setting would be
 `[[80, 79], [77, 76], [73, 85], [75, 74], [78, 72], [89, 84], [71, 66], [86, 70], [82, 69], [68, 67]]`
+
+## Encrypting and Decrypting
