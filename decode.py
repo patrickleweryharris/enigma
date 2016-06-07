@@ -3,6 +3,10 @@ from enigma import Enigma
 from message import Message
 import math
 
+DECODE = "d"
+
+def process_messages(msg):
+    # TODO
 
 def first_rotor(machine, message):
     """
