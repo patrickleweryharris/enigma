@@ -20,6 +20,10 @@
 *.sql
 *.sqlite
 
+.idea
+*.idea
+*.pyc
+*.xml
 
 .DS_Store
 .DS_Store?
