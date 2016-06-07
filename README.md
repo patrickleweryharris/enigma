@@ -1,8 +1,9 @@
 # Enigma
-![License](https://img.shields.io/badge/LICENSE-MIT-blue.svg) ![python](https://img.shields.io/badge/python-3.5-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg) ![python](https://img.shields.io/badge/python-3.5-blue.svg)
 
 The enigma encryption algorithm in python
 
+![Cool Picture](https://raw.githubusercontent.com/patrickleweryharris/enigma/master/img/enigma_machine.jpg)
 
 ## Introduction
 The enigma machine was one of the most advanced crypto graphical technologies of it's time, possibly the most advanced cryptography humanity has achieved without computers.
