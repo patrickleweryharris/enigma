@@ -32,8 +32,8 @@ def get_encryption_mode():
     msg = 'Do you want to encrypt ({0}) or decrypt ({1})? '.format(
                 encode.ENCODE, decode.DECODE)
     mode = input(msg)
-    while not (mode == cipher_functions.ENCRYPT or
-               mode == cipher_functions.DECRYPT):
+    while not (mode == encode.ENCRYPT or
+               mode == decode.DECRYPT):
                 print('Invalid mode.')
                 mode = input(msg)
     return mode
