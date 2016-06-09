@@ -6,7 +6,8 @@ import math
 DECODE = "d"
 
 def process_messages(msg):
-    # TODO
+    # TODO sanitize messages
+
 
 def first_rotor(machine, message):
     """
@@ -16,7 +17,7 @@ def first_rotor(machine, message):
     @type message: Message
     @rtype: None
     """
-    # TODO
+    # TODO first rotor decoding
 
 
 def second_rotor(machine, message):
@@ -27,7 +28,7 @@ def second_rotor(machine, message):
     @type message: Message
     @rtype: None
     """
-    # TODO
+    # TODO second rotor decoding
 
 
 def third_rotor(machine, message):
@@ -38,7 +39,7 @@ def third_rotor(machine, message):
     @type message: Message
     @rtype: None
     """
-    # TODO
+    # TODO third rotor decoding
 
 
 def first_ring(machine, message):
@@ -51,7 +52,7 @@ def first_ring(machine, message):
     @type message: message
     @rtype: None
     """
-    # TODO
+    # TODO first ring deconding
 
 
 def second_ring(machine, message):
@@ -64,7 +65,7 @@ def second_ring(machine, message):
     @type message: Message
     @rtype: None
     """
-    # TODO
+    # TODO second ring decoding
 
 
 def plugs(machine, message):
@@ -77,4 +78,4 @@ def plugs(machine, message):
     @type message: Message
     @rtype: None
     """
-    # TODO
+    # TODO plug decoding

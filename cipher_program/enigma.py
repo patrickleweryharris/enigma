@@ -22,3 +22,12 @@ class Enigma:
         self.rotor_settings = rotor_settings
         self.ring_settings = ring_settings
         self.plug_settings = plug_settings
+
+    def __str__(self):
+        """
+        Return a string representation
+
+        @type self: Enigma
+        @rtype: str
+        """
+        # TODO create str method

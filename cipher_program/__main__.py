@@ -5,6 +5,8 @@ import encode
 import decode
 import os.path
 
+# FIXME still using some old file names
+
 def get_valid_filename(msg):
     """
     Prompt the user, using msg, to type the name of a file. This file should
@@ -49,7 +51,7 @@ def main():
     enigma_file = open(get_valid_filename(prompt), 'r')
     enigma_machine =  # TODO
     enigma_file.close()
-    if not (cipher_functions.is_valid_deck(deck)):
+    if not (cipher_functions.is_valid_deck(deck)): # FIXME Should never mention "cipher_functions"
         print('The supplied file is not a valid enigma machine.')
         print('Encryption process stopping.')
         return

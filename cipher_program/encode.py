@@ -6,7 +6,7 @@ import math
 ENCODE = "e"
 
 def process_messages(msg):
-    # TODO
+    # TODO sanitize messages
 
 def first_rotor(machine, message):
     """
@@ -16,7 +16,7 @@ def first_rotor(machine, message):
     @type message: Message
     @rtype: None
     """
-    # TODO
+    # TODO first rotor encoding
 
 
 def second_rotor(machine, message):
@@ -27,7 +27,7 @@ def second_rotor(machine, message):
     @type message: Message
     @rtype: None
     """
-    # TODO
+    # TODO second rotor encoding
 
 
 def third_rotor(machine, message):
@@ -38,7 +38,7 @@ def third_rotor(machine, message):
     @type message: Message
     @rtype: None
     """
-    # TODO
+    # TODO third rotor encoding
 
 
 def first_ring(machine, message):
@@ -51,7 +51,7 @@ def first_ring(machine, message):
     @type message: message
     @rtype: None
     """
-    # TODO
+    # TODO first ring encoding
 
 
 def second_ring(machine, message):
@@ -64,7 +64,7 @@ def second_ring(machine, message):
     @type message: Message
     @rtype: None
     """
-    # TODO
+    # TODO second ring encoding
 
 
 def plugs(machine, message):
@@ -77,4 +77,4 @@ def plugs(machine, message):
     @type message: Message
     @rtype: None
     """
-    # TODO
+    # TODO plug encoding
