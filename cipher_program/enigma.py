@@ -30,4 +30,8 @@ class Enigma:
         @type self: Enigma
         @rtype: str
         """
-        # TODO create str method
+        returned_str = "===Enigma Machine Settings===\n"
+        returned_str += "Rotor: {0}\nRing: {1}\nPlug: {2}\n".\
+            format(self.rotor_settings, self.ring_settings, self.plug_settings)
+        returned_str += "============================="
+        return returned_str
