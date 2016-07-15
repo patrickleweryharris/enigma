@@ -5,10 +5,6 @@ import math
 
 DECODE = "d"
 
-def process_messages(msg):
-    # TODO sanitize messages
-
-
 def first_rotor(machine, message):
     """
     The first rotor of an enigma machine

@@ -6,7 +6,18 @@ import math
 ENCODE = "e"
 
 def process_messages(msg):
-    # TODO sanitize messages
+    """
+    Sanitize the message to something friendlier to the encryption program
+
+    @type msg: str
+    @rtype: None
+    """
+    cleaned_message = ''
+    for char in msg.upper():
+        if char.isalpha():  # FIXME Cannot currently handle numbers
+            cleaned_message += char
+    return cleaned_message
+
 
 def first_rotor(machine, message):
     """
