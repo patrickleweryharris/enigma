@@ -14,7 +14,9 @@ def process_messages(msg):
     """
     cleaned_message = ''
     for char in msg.upper():
-        if char.isalpha():  # FIXME Cannot currently handle numbers
+        if char.isalpha():
+            cleaned_message += char
+        if char.isint():  # Not sure this will work for numbers. May create encoding problems down the line
             cleaned_message += char
     return cleaned_message
 
