@@ -1,11 +1,10 @@
 # Functions for encoding a message with a three rotor enigma machine
 from enigma import Enigma
-from message import Message
 import math
 
 ENCODE = "e"
 
-def process_messages(msg):
+def _process_messages(msg):
     """
     Sanitize the message to something friendlier to the encryption program
 
@@ -16,20 +15,29 @@ def process_messages(msg):
     for char in msg.upper():
         if char.isalpha():
             cleaned_message += char
-        if char.isint():  # Not sure this will work for numbers. May create encoding problems down the line
-            cleaned_message += char
     return cleaned_message
 
+def _create_ascii_encoding(msg):
+    """
+    Turn the sanitized message into a version encoded into ordinals.
+
+    @type msg: str
+    @rtype: [int]
+    """
+    returned_list = []
+    for char in msg:
+        returned_list.append(ord(char))
+    return returned_list
 
 def first_rotor(machine, message):
     """
     The first rotor of an enigma machine
 
     @type machine: Enigma
-    @type message: Message
+    @type message: [int]
     @rtype: None
     """
-    # TODO first rotor encoding
+    first_rotor_pos = machine.rotor_settings[0]
 
 
 def second_rotor(machine, message):
@@ -37,7 +45,7 @@ def second_rotor(machine, message):
     The second rotor of an enigma machine
 
     @type machine: Enigma
-    @type message: Message
+    @type message: [int]
     @rtype: None
     """
     # TODO second rotor encoding
@@ -48,7 +56,7 @@ def third_rotor(machine, message):
     The third rotor of an enigma machine
 
     @type macine: Enigma
-    @type message: Message
+    @type message: [int]
     @rtype: None
     """
     # TODO third rotor encoding
@@ -61,7 +69,7 @@ def first_ring(machine, message):
     Calibrates based on the machine's ring setting
 
     @type machine: Enigma
-    @type message: message
+    @type message: [int]
     @rtype: None
     """
     # TODO first ring encoding
@@ -74,7 +82,7 @@ def second_ring(machine, message):
     Calibrates based on the machine's ring setting
 
     @type machine: Enigma
-    @type message: Message
+    @type message: [int]
     @rtype: None
     """
     # TODO second ring encoding
@@ -87,7 +95,7 @@ def plugs(machine, message):
     Calibrates based on the machine's plug settings
 
     @type machine: Enigma
-    @type message: Message
+    @type message: [int]
     @rtype: None
     """
     # TODO plug encoding

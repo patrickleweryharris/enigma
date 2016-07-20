@@ -52,3 +52,9 @@ Again, for the purposes of this simulation, the ordinals of these letters will b
 `[[80, 79], [77, 76], [73, 85], [75, 74], [78, 72], [89, 84], [71, 66], [86, 70], [82, 69], [68, 67]]`
 
 ## Encrypting and Decrypting
+
+`#TODO`
+
+## Random Stuff
+
+- Messages only accept letters of the alphabet (for now)

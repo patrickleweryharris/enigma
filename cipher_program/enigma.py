@@ -3,6 +3,7 @@ class Enigma:
     An enigma machine with rotor, ring and plug settings
 
     === Attributes ===
+
     @type rotor_settings: [int]
     @type ring_settings: [int]
     @type plug_settings: [int]
