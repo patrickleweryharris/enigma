@@ -3,7 +3,11 @@ Encrypt or decrypt the contents of a message file using an enigma machine.
 """
 import encode
 import decode
+from enigma import Enigma
 import os.path
+
+ENCODE = "e"
+DECODE = "d"
 
 # FIXME still using some old file names
 
@@ -40,6 +44,45 @@ def get_encryption_mode():
                 mode = input(msg)
     return mode
 
+
+def is_valid_machine(machine):
+    """
+    Return true iff an enigma file has valid plug, ring and rotor settings
+
+    @type machine: Enigma
+    @rtype: bool
+    """
+    # General checks
+
+    if type(machine) != Enigma:  # Will this work??
+        return False
+
+    # Plug checks:
+    if len(machine.plug_settings != 10):
+        return False
+
+    for plug in machine.plug_settings:
+        if len(plug) != 2 or type(plug[0]) != int or type(plug[1]) != int:
+            return False
+
+    # Rotor Checks
+
+    # TODO add some rotor checks
+
+    # Ring Checks
+    if len(machine.ring_settings) != 2 or\
+        type(machine.ring_settings[0]) != int or\
+            type(machine.ring_settings[1]) != int:
+        return False
+
+    if machine.ring_settings[0] not in range(0, 27):
+        return False
+
+    if machine.ring_settings[1] not in range(0, 27):
+        return False
+
+    return True
+
 def main():
     """
     Perform the encryption using the deck from file named DECK_FILENAME and
@@ -49,9 +92,9 @@ def main():
 
     prompt = 'Enter the name of the file that contains the enigma machine: '
     enigma_file = open(get_valid_filename(prompt), 'r')
-    enigma_machine =  # TODO
+    enigma_machine =  # TODO Create an engima machine from the file
     enigma_file.close()
-    if not (cipher_functions.is_valid_deck(deck)): # FIXME Should never mention "cipher_functions"
+    if not (is_valid_machine(enigma_machine)):
         print('The supplied file is not a valid enigma machine.')
         print('Encryption process stopping.')
         return

@@ -1,8 +1,8 @@
 # Functions for encoding a message with a three rotor enigma machine
-from enigma import Enigma
-import math
 
-ENCODE = "e"
+# Could be combined with decode.py using instanced variables
+from enigma import Enigma
+
 
 def _process_messages(msg):
     """
@@ -17,6 +17,7 @@ def _process_messages(msg):
             cleaned_message += char
     return cleaned_message
 
+
 def _create_ascii_encoding(msg):
     """
     Turn the sanitized message into a version encoded into ordinals.
@@ -29,63 +30,39 @@ def _create_ascii_encoding(msg):
         returned_list.append(ord(char))
     return returned_list
 
-def first_rotor(machine, message):
+
+def rotor(machine, message, rotor_num, ring_num):
     """
-    The first rotor of an enigma machine
+    Singular function for all rotors of an enigma machine
 
     @type machine: Enigma
     @type message: [int]
+    @type rotor_num: int
+    @type ring_num: int
     @rtype: None
     """
-    first_rotor_pos = machine.rotor_settings[0]
+    rotor_pos = machine.rotor_settings[rotor_num]
+    for char in message:
+        char = char + rotor_pos
+
+    # Ring Setting
+    machine.rotor_settings[rotor_num] = rotor_pos +\
+        _ring(rotor_pos, machine.ring_settings[ring_num])
 
 
-def second_rotor(machine, message):
+def _ring(rotor_setting, ring_num):
     """
-    The second rotor of an enigma machine
+    Singular function for all rings of an enigma machine
 
-    @type machine: Enigma
-    @type message: [int]
-    @rtype: None
+    @type rotor_setting: int
+    @type ring_num: int
+    @rtype: int
     """
-    # TODO second rotor encoding
+    if rotor_setting == ring_num:
+        return 1
 
-
-def third_rotor(machine, message):
-    """
-    The third rotor of an enigma machine
-
-    @type macine: Enigma
-    @type message: [int]
-    @rtype: None
-    """
-    # TODO third rotor encoding
-
-
-def first_ring(machine, message):
-    """
-    The first ring of an enigma machine
-
-    Calibrates based on the machine's ring setting
-
-    @type machine: Enigma
-    @type message: [int]
-    @rtype: None
-    """
-    # TODO first ring encoding
-
-
-def second_ring(machine, message):
-    """
-    The second ring of an enigma machine
-
-    Calibrates based on the machine's ring setting
-
-    @type machine: Enigma
-    @type message: [int]
-    @rtype: None
-    """
-    # TODO second ring encoding
+    else:
+        return 0
 
 
 def plugs(machine, message):
@@ -98,4 +75,9 @@ def plugs(machine, message):
     @type message: [int]
     @rtype: None
     """
-    # TODO plug encoding
+    for i in range(len(message)):
+        for plug in machine.plug_settings:
+            if message[i] == plug[0]:
+                message[i] = plug[1]
+                # FIXME using this approach letters can be changed by a plug
+                # setting more than once under certain conditions
