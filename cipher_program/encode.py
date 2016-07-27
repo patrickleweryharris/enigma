@@ -1,4 +1,4 @@
-# Functions for encoding a message with a three rotor enigma machine
+# Functions for encoding a message with an enigma machine comprised of n rotors
 
 # Could be combined with decode.py using instanced variables
 from enigma import Enigma
@@ -27,7 +27,7 @@ def _create_ascii_encoding(msg):
     """
     returned_list = []
     for char in msg:
-        returned_list.append(ord(char))
+        returned_list.append(ord(char) - 65)
     return returned_list
 
 
@@ -58,6 +58,9 @@ def _ring(rotor_setting, ring_num):
     @type ring_num: int
     @rtype: int
     """
+    if ring_num == 0:
+        # special condition for first rotor?
+        return 0  # Needs to be something different
     if rotor_setting == ring_num:
         return 1
 
@@ -81,3 +84,40 @@ def plugs(machine, message):
                 message[i] = plug[1]
                 # FIXME using this approach letters can be changed by a plug
                 # setting more than once under certain conditions
+
+
+def return_to_string(msg):
+    """
+    Return a string of the encoded message
+
+    @type msg: [int]
+    @rtype: str
+    """
+    returned_str = ""
+
+    for char in msg:
+        returned_str += chr(char)
+
+    return returned_str
+
+
+# Main encryption function ----------------------------------------------------
+def encipher(orig, machine):
+    """
+    Return an encrypted message
+
+    @type orig: str
+    @type machine: Enigma
+    @rtype: str
+    """
+    cleaned_message = _process_messages(orig)
+    ascii_message = _create_ascii_encoding(cleaned_message)
+    rotor(machine, ascii_message, 0, 0)
+    rotor(machine, ascii_message, 1, 1)
+    rotor(machine, ascii_message, 2, 2)
+    # One of the rotors shouldn't have a ring
+    # See special conditions in ring function on line 61
+    # Create a special case if the ring number is 0
+    plugs(machine, ascii_message)
+    end_msg = return_to_string(ascii_message)
+    return end_msg

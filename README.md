@@ -26,7 +26,7 @@ A typical enigma machine had three rotors (which we are simulating here). Rotors
 
 For example, rotor settings could be `["A", "A", "A"]` or `["B", "Q", "Z"]`
 
-In our simulation here, these will be represented by the ordinal of the these letters (i.e. `["A", "A", "A"]` will be `[65, 65, 65]` and `["B", "Q", "Z"]` will be `[66, 81, 90]`)
+In our simulation here, these will be represented by the ordinal of the these letters (i.e. `["A", "A", "A"]` will be `[0, 0, 0]` and `["B", "Q", "Z"]` will be `[1, 16, 26]`)
 
 ### Ring settings
 

@@ -67,7 +67,15 @@ def is_valid_machine(machine):
 
     # Rotor Checks
 
-    # TODO add some rotor checks
+    if len(machine.rotor_settings) != 3 or\
+        type(machine.rotor_settings[0]) != int or\
+        type(machine.rotor_settings[1]) != int or\
+            type(machine.rotor_settings[2]) != int:
+        return False
+
+    for rotor in machine.rotor_settings:
+        if rotor not in range(0, 27):
+            return False
 
     # Ring Checks
     if len(machine.ring_settings) != 2 or\
@@ -75,18 +83,16 @@ def is_valid_machine(machine):
             type(machine.ring_settings[1]) != int:
         return False
 
-    if machine.ring_settings[0] not in range(0, 27):
-        return False
-
-    if machine.ring_settings[1] not in range(0, 27):
-        return False
+    for ring in machine.ring_settings:
+        if ring not in range(0, 27):
+            return False
 
     return True
 
 def main():
     """
-    Perform the encryption using the deck from file named DECK_FILENAME and
-    the message from file named MSG_FILENAME. If MODE is 'e', encrypt;
+    Perform the encryption using the machine from file named MACHINE_FILENAME
+    and the message from file named MSG_FILENAME. If MODE is 'e', encrypt;
     otherwise, decrypt.
     """
 
@@ -105,13 +111,12 @@ def main():
     msg_file.close()
 
     mode = get_encryption_mode()
-    if mode == DECRYPT:
+    if mode == DECRYPT:  # FIXME update these calls to the new functions
         for msg in decode.process_messages(enigma_machine, messages, mode):
             print(msg)
 
     if mode == ENCRYPT:
-        for msg in enocode.process_messages(enigma_machine, messages, mode):
-            print(msg)
+        print(encode.encipher(messages, enigma_machine))
 
 if __name__ == "__main__":
     main()
