@@ -101,7 +101,6 @@ def main():
     and the message from file named MSG_FILENAME. If MODE is 'e', encrypt;
     otherwise, decrypt.
     """
-
     prompt = 'Enter the name of the file that contains the enigma machine: '
     enigma_file = open(get_valid_filename(prompt), 'r')
     enigma_machine = something  # TODO Create an engima machine from the file
@@ -113,15 +112,15 @@ def main():
 
     prompt = 'Enter the name of the file that contains the message: '
     msg_file = open(get_valid_filename(prompt), 'r')
-    messages =  something # TODO need to redo this entire function
+    messages = something  # TODO need to redo this entire function
     msg_file.close()
 
     mode = get_encryption_mode()
-    if mode == DECRYPT:  # FIXME update these calls to the new functions
+    if mode == DECODE:  # FIXME update these calls to the new functions
         for msg in decode.process_messages(enigma_machine, messages, mode):
             print(msg)
 
-    if mode == ENCRYPT:
+    if mode == ENCODE:
         print(encode.encipher(messages, enigma_machine))
 
 if __name__ == "__main__":

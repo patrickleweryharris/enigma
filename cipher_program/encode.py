@@ -70,7 +70,7 @@ def _ring(rotor_setting, ring_num):
 
 def plugs(machine, message):
     """
-    Plug settings of an enigma machine
+    Encrypt via the plug settings of an enigma machine
 
     Calibrates based on the machine's plug settings
 
@@ -119,3 +119,6 @@ def encipher(orig, machine):
     plugs(machine, ascii_message)
     end_msg = return_to_string(ascii_message)
     return end_msg
+
+    # This program is currently hardcoded to a three rotor enigma variant,
+    # though it is compleatly extensible
