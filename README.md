@@ -49,7 +49,7 @@ This board had ten cables that would switch letter configurations (i.e if "A" wa
 An example plug setting could be `[['P','O'], ['M', 'L'], ['I','U'], ['K','J'], ['N','H'], ['Y','T'], ['G','B'], ['V','F'], ['R','E'], ['D','C']]`
 
 Again, for the purposes of this simulation, the ordinals of these letters will be use. So this example ring setting would be
-`[[80, 79], [77, 76], [73, 85], [75, 74], [78, 72], [89, 84], [71, 66], [86, 70], [82, 69], [68, 67]]`
+`[[15, 14], [12, 11], [8, 20], [10, 9], [13, 7], [24, 19], [6, 1], [21, 5], [17, 4], [3, 2]]`
 
 By convention, no letter is mentioned more than once in plug settings, i.e. `[['A', 'E'], ['E', 'A']]` is not  a valid plug setting
 
