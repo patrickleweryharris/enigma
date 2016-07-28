@@ -11,6 +11,7 @@ DECODE = "d"
 
 # FIXME still using some old file names
 
+
 def get_valid_filename(msg):
     """
     Prompt the user, using msg, to type the name of a file. This file should
@@ -27,6 +28,7 @@ def get_valid_filename(msg):
         filename = input(msg)
     return filename
 
+
 def get_encryption_mode():
     """
     Prompt the user to enter the encryption mode. If the user enters an invalid
@@ -36,7 +38,7 @@ def get_encryption_mode():
     @rtype: str
     """
     msg = 'Do you want to encrypt ({0}) or decrypt ({1})? '.format(
-                encode.ENCODE, decode.DECODE)
+        encode.ENCODE, decode.DECODE)
     mode = input(msg)
     while not (mode == encode.ENCRYPT or
                mode == decode.DECRYPT):
@@ -54,10 +56,13 @@ def is_valid_machine(machine):
     """
     # General checks
 
-    if type(machine) != Enigma:  # Will this work??
+    if type(machine) != Enigma:  # FIXME Will this work??
         return False
 
     # Plug checks:
+
+    # TODO need to add checks for valid plug setting
+    # see 'by convention' blurb in README.md
     if len(machine.plug_settings != 10):
         return False
 
@@ -89,6 +94,7 @@ def is_valid_machine(machine):
 
     return True
 
+
 def main():
     """
     Perform the encryption using the machine from file named MACHINE_FILENAME
@@ -98,7 +104,7 @@ def main():
 
     prompt = 'Enter the name of the file that contains the enigma machine: '
     enigma_file = open(get_valid_filename(prompt), 'r')
-    enigma_machine =  # TODO Create an engima machine from the file
+    enigma_machine = something  # TODO Create an engima machine from the file
     enigma_file.close()
     if not (is_valid_machine(enigma_machine)):
         print('The supplied file is not a valid enigma machine.')
@@ -107,7 +113,7 @@ def main():
 
     prompt = 'Enter the name of the file that contains the message: '
     msg_file = open(get_valid_filename(prompt), 'r')
-    messages =  # TODO
+    messages =  something # TODO need to redo this entire function
     msg_file.close()
 
     mode = get_encryption_mode()

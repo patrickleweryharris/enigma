@@ -51,6 +51,8 @@ An example plug setting could be `[['P','O'], ['M', 'L'], ['I','U'], ['K','J'], 
 Again, for the purposes of this simulation, the ordinals of these letters will be use. So this example ring setting would be
 `[[80, 79], [77, 76], [73, 85], [75, 74], [78, 72], [89, 84], [71, 66], [86, 70], [82, 69], [68, 67]]`
 
+By convention, no letter is mentioned more than once in plug settings, i.e. `[['A', 'E'], ['E', 'A']]` is not  a valid plug setting
+
 ## Encrypting and Decrypting
 
 `#TODO`

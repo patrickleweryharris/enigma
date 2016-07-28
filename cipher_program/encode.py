@@ -82,8 +82,6 @@ def plugs(machine, message):
         for plug in machine.plug_settings:
             if message[i] == plug[0]:
                 message[i] = plug[1]
-                # FIXME using this approach letters can be changed by a plug
-                # setting more than once under certain conditions
 
 
 def return_to_string(msg):
@@ -96,7 +94,7 @@ def return_to_string(msg):
     returned_str = ""
 
     for char in msg:
-        returned_str += chr(char)
+        returned_str += chr(char + 65)
 
     return returned_str
 
