@@ -6,8 +6,11 @@ The enigma encryption algorithm in python
 ##### Table of Contents
 
 [Introduction](https://github.com/patrickleweryharris/enigma#introduction)
+
 [Enigma Settings](https://github.com/patrickleweryharris/enigma#enigma-settings)
+
 [Encrypting and Decrypting](https://github.com/patrickleweryharris/enigma#encrypting-and-decrypting)
+
 [Random Stuff](https://github.com/patrickleweryharris/enigma#random-stuff)
 
 ![Cool Picture](https://raw.githubusercontent.com/patrickleweryharris/enigma/master/img/enigma_machine.jpg)
