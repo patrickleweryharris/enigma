@@ -103,7 +103,10 @@ def main():
     """
     prompt = 'Enter the name of the file that contains the enigma machine: '
     enigma_file = open(get_valid_filename(prompt), 'r')
-    enigma_machine = something  # TODO Create an engima machine from the file
+    enigma_list = []
+    for line in enigma_file:
+        enigma_list.append(line)
+    enigma_machine = Enigma(enigma_list[0], enigma_list[1], enigma_list[2])
     enigma_file.close()
     if not (is_valid_machine(enigma_machine)):
         print('The supplied file is not a valid enigma machine.')
@@ -112,7 +115,8 @@ def main():
 
     prompt = 'Enter the name of the file that contains the message: '
     msg_file = open(get_valid_filename(prompt), 'r')
-    messages = something  # TODO need to redo this entire function
+    messages = msg_file.read()
+    messages.rstrip()
     msg_file.close()
 
     mode = get_encryption_mode()
