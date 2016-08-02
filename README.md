@@ -3,6 +3,13 @@
 
 The enigma encryption algorithm in python
 
+##### Table of Contents
+
+[Introduction](https://github.com/patrickleweryharris/enigma#introduction)
+[Enigma Settings](https://github.com/patrickleweryharris/enigma#enigma-settings)
+[Encrypting and Decrypting](https://github.com/patrickleweryharris/enigma#encrypting-and-decrypting)
+[Random Stuff](https://github.com/patrickleweryharris/enigma#random-stuff)
+
 ![Cool Picture](https://raw.githubusercontent.com/patrickleweryharris/enigma/master/img/enigma_machine.jpg)
 
 ## Introduction
@@ -55,7 +62,27 @@ By convention, no letter is mentioned more than once in plug settings, i.e. `[['
 
 ## Encrypting and Decrypting
 
-`#TODO`
+### Encrypting a file
+
+#### Message file
+
+The message file can be any text file. Non alphabetic characters and spaces will be stripped by the encryption process.
+
+Messages should be constructed like old style telegraphs:
+
+`THIS IS MY MESSAGE STOP ARRIVE BY FOUR FORTY FIVE STOP`
+
+
+#### Enigma machine file
+The enigma machine file should only have three lines. The first line is the rotor settings, the second the ring settings and the third is the plug settings.
+
+An example of an enigma file:
+
+```python
+[0, 0, 0]
+[26, 26]
+[[15, 14], [12, 11], [8, 20], [10, 9], [13, 7], [24, 19], [6, 1], [21, 5], [17, 4], [3, 2]]
+```
 
 ## Random Stuff
 
