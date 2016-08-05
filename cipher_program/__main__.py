@@ -106,7 +106,8 @@ def main():
     enigma_list = []
     for line in enigma_file:
         enigma_list.append(line)
-    enigma_machine = Enigma(enigma_list[0].rstrip(), enigma_list[1].rstrip(), enigma_list[2].rstrip())
+    enigma_machine = Enigma(enigma_list[0].rstrip(), enigma_list[1].rstrip(),
+                            enigma_list[2].rstrip())
     enigma_file.close()
     if not (is_valid_machine(enigma_machine)):
         print('The supplied file is not a valid enigma machine.')
