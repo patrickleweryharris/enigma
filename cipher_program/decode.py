@@ -13,7 +13,14 @@ def rotor(machine, message, rotor_num, ring_num):
     @type ring_num: int
     @rtype: None
     """
-    # TODO design rotor function for decrypting
+    rotor_pos = machine.rotor_settings[rotor_num]
+    for char in message:
+        char = rotor_pos - char  # Should this expression be reversed?
+
+    # Ring Setting
+    machine.rotor_settings[rotor_num] = \
+        _ring(rotor_pos, machine.ring_settings[ring_num]) - rotor_pos
+
 
 
 def _ring(rotor_setting, ring_num):
