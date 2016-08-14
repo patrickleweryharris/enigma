@@ -2,6 +2,9 @@
 from enigma import Enigma
 import encode  # Decode and encode share some functions
 
+# TODO method for decoding needs to be thought out better.
+# Currently turning text into unrecognizable jumble
+
 
 def rotor(machine, message, rotor_num, ring_num):
     """
@@ -18,9 +21,8 @@ def rotor(machine, message, rotor_num, ring_num):
         char = rotor_pos - char  # Should this expression be reversed?
 
     # Ring Setting
-    machine.rotor_settings[rotor_num] = \
-        _ring(rotor_pos, machine.ring_settings[ring_num]) - rotor_pos
-
+    machine.rotor_settings[rotor_num] = abs(
+        _ring(rotor_pos, machine.ring_settings[ring_num]) - rotor_pos)
 
 
 def _ring(rotor_setting, ring_num):
@@ -31,7 +33,14 @@ def _ring(rotor_setting, ring_num):
     @type ring_num: int
     @rtype: int
     """
-    # TODO design ring function for decrypting
+    if ring_num == 0:
+        # special condition for first rotor?
+        return 0  # Needs to be something different
+    if rotor_setting == ring_num:
+        return 1
+
+    else:
+        return 0
 
 
 def plugs(machine, message):
