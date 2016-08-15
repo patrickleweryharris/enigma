@@ -31,7 +31,7 @@ def _create_ascii_encoding(msg):
     return returned_list
 
 
-def rotor(machine, message, rotor_num, ring_num):
+def rotor(machine, message, rotor_num, ring_num):  # FIXME Rename to reflect that this method is now ring and rotor
     """
     Singular function for all rotors of an enigma machine
 
@@ -46,12 +46,11 @@ def rotor(machine, message, rotor_num, ring_num):
     for char in message:
         char = char + rotor_pos
         rotor_pos += 1
-        if rotor_pos - 26 == starting_pos:
+        if rotor_pos - 26 == starting_pos:  # Hardcoded ring setting
             rotor_pos = starting_pos  # Makes the rotors circular
             next_rotor = _get_next_rotor(rotor_num)
             if next_rotor == 1 or next_rotor == 2:
-                _ring(rotor_pos, machine.ring_settings[ring_num])  # Ring should advance the next rotor at this point
-            # Will need a new rotor parameter
+                machine.rotor_settings[rotor_num + 1] += 1
 
 
 def _ring(rotor_setting, ring_num):
@@ -70,7 +69,7 @@ def _ring(rotor_setting, ring_num):
 
     else:
         return 0
-    # FIXME Need to redesign ring function
+    # FIXME Ring function is no longer needed. Has been hardcode in line 49
 
 
 def _get_next_rotor(rotor_num):
