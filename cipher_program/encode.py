@@ -42,12 +42,16 @@ def rotor(machine, message, rotor_num, ring_num):
     @rtype: None
     """
     rotor_pos = machine.rotor_settings[rotor_num]
+    starting_pos = rotor_pos
     for char in message:
         char = char + rotor_pos
-
-    # Ring Setting
-    machine.rotor_settings[rotor_num] = rotor_pos +\
-        _ring(rotor_pos, machine.ring_settings[ring_num])
+        rotor_pos += 1
+        if rotor_pos - 26 == starting_pos:
+            rotor_pos = starting_pos  # Makes the rotors circular
+            next_rotor = _get_next_rotor(rotor_num)
+            if next_rotor == 1 or next_rotor == 2:
+                _ring(rotor_pos, machine.ring_settings[ring_num])  # Ring should advance the next rotor at this point
+            # Will need a new rotor parameter
 
 
 def _ring(rotor_setting, ring_num):
@@ -64,6 +68,22 @@ def _ring(rotor_setting, ring_num):
     if rotor_setting == ring_num:
         return 1
 
+    else:
+        return 0
+    # FIXME Need to redesign ring function
+
+
+def _get_next_rotor(rotor_num):
+    """
+    Get the next rotor to move
+
+    @type rotor_num: int
+    @rtype: int
+    """
+    if rotor_num == 0:
+        return 1
+    elif rotor_num == 1:
+        return 2
     else:
         return 0
 
