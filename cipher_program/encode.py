@@ -41,17 +41,21 @@ def rotor(machine, message, rotor_num, ring_num):  # FIXME Rename to reflect tha
     @type ring_num: int
     @rtype: None
     """
+    returned_str = []
     rotor_pos = machine.rotor_settings[rotor_num]
     starting_pos = rotor_pos
     for char in message:
         char = char + rotor_pos
         rotor_pos += 1
+        if rotor_pos == 27:
+            rotor_pos = 1
         if rotor_pos - 26 == starting_pos:  # Hardcoded ring setting
             rotor_pos = starting_pos  # Makes the rotors circular
             next_rotor = _get_next_rotor(rotor_num)
             if next_rotor == 1 or next_rotor == 2:
                 machine.rotor_settings[rotor_num + 1] += 1
-
+        returned_str.append(char)
+    message = returned_str
 
 def _ring(rotor_setting, ring_num):
     """
@@ -97,6 +101,7 @@ def plugs(machine, message):
     @type message: [int]
     @rtype: None
     """
+    print(message)
     for i in range(len(message)):
         for plug in machine.plug_settings:
             if message[i] == plug[0]:
@@ -131,7 +136,7 @@ def encipher(orig, machine):
     ascii_message = _create_ascii_encoding(cleaned_message)
     rotor(machine, ascii_message, 0, 0)
     rotor(machine, ascii_message, 1, 1)
-    rotor(machine, ascii_message, 2, 2)
+    rotor(machine, ascii_message, 2, 6)
     # One of the rotors shouldn't have a ring
     # See special conditions in ring function on line 61
     # Create a special case if the ring number is 0
@@ -141,3 +146,9 @@ def encipher(orig, machine):
 
     # This program is currently hardcoded to a three rotor enigma variant,
     # though it is compleatly extensible
+
+
+if __name__ == "__main__":
+    machine = Enigma([4,5 , 6], [0], [[15, 14], [12, 11], [8, 20], [10, 9], [13, 7], [19, 24], [6, 1], [21, 5], [17, 4], [3, 2]])
+    message = 'test'
+    print(encipher(message, machine))
